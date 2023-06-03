@@ -4,6 +4,8 @@ class MyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.counter = 0
+
         self.setWindowTitle("Moja aplikacja PyQt")
 
         self.button = QPushButton("Naciśnij mnie! \nPonieważ lubię byc klikany!\nDziękuję!")
@@ -13,7 +15,9 @@ class MyWindow(QMainWindow):
         self.setCentralWidget(self.button)
 
     def the_button_was_clicked(self):
-        self.button.setText("Kliknięty!\nDziękuję!")
+        self.counter += 1
+        #self.button.setText("Kliknięto " + str(self.counter) + " razy!")
+        self.button.setText(f"Kliknięto {self.counter} razy!")
 
 
 app = QApplication(sys.argv)
