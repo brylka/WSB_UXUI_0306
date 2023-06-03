@@ -14,4 +14,5 @@ with connection.cursor() as cursor:
 
 for record in records:
     id, name, surname, email = record
-    print(f"ID: {id}, Imię: {name}, Nazwisko: {surname}, Email: {email}")
+    #print(f"ID: {id}, Imię: {name}, Nazwisko: {surname}, Email: {email}")
+    print(f"ID: {id:>3} Imię: {name:<15} Nazwisko: {surname:<15} Email: {email:<30}")
