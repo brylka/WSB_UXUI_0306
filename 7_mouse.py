@@ -14,12 +14,30 @@ class MainWindow(QMainWindow):
     def mousePressEvent(self, e):
         x = e.position().x()
         y = e.position().y()
-        self.label.setText(f"Kliknięto w okno w pozycji o współrzędnych ({x}, {y})")
+        self.label.setText(f"Kliknięto ({x}, {y})")
 
-        if x <= 300:
-            self.label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        if x <= 200:
+            if y <= 200:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+            elif y >= 400:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignBottom)
+            else:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        elif x >= 400:
+            if y <= 200:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
+            elif y >= 400:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignBottom)
+            else:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
         else:
-            self.label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+            if y <= 200:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
+            elif y > 200 and y < 400:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignVCenter)
+            elif y >= 400:
+                self.label.setAlignment(Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom)
+
 
 app = QApplication(sys.argv)
 window = MainWindow()
